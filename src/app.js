@@ -18,7 +18,8 @@ app.post('/login', (req, res) => {
 // Vulnerability 2: Hardcoded secrets
 const API_KEY = "sk-1234567890abcdef";
 const DB_PASSWORD = "admin123";
-
+console.log('API Key:', API_KEY);
+console.log('Database password:', DB_PASSWORD);
 // Vulnerability 3: Insecure random number generation
 app.get('/token', (req, res) => {
     const token = Math.random().toString(36);
@@ -28,6 +29,7 @@ app.get('/token', (req, res) => {
 // Vulnerability 4: Prototype pollution via lodash
 app.post('/merge', (req, res) => {
     const result = _.merge({}, req.body);
+    console.log('Merged object:', result);
     res.json(result);
 });
 
